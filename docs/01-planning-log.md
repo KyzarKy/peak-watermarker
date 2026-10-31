@@ -9,7 +9,7 @@ built until Ky signs off on it.
 ## Status
 
 Rounds 1 to 4 answered. Rounds 5 and 6 are for Mom; Ky asks her. Asked 2026-10-30, waiting
-on her answers.
+on her answers. Round 7, on styling, is for Ky (asked 2026-10-30).
 
 ## Decided
 
@@ -69,6 +69,7 @@ Decided in the dialogue:
 
 - Mom's phone settings (round 5).
 - How Mom wants it to work (round 6).
+- Styling (round 7).
 - Ky's question bank (below).
 - Later features: logo or signature, copyright in metadata, keeping HDR, an album, a
   web-size export, more saved styles, Android.
@@ -149,14 +150,32 @@ Record the shape of her answers only, never her name or the mark's text (AGENTS.
    website or print lab takes it?
 5. **Today:** what does she use now, if anything, and what bugs her about it?
 
+## Round 7: styling (Ky, asked 2026-10-30)
+
+From `research/styling-nativewind-vs-plain.md`.
+
+1. **Styling for v1:** plain React Native styles with @kyzarky/ui's colors copied into
+   `src/theme.ts`, or NativeWind v5 with a native copy of its theme?
+   - Neither Tailwind library that Expo's guide names, NativeWind or Uniwind, reads
+     `theme.css` 0.5.2 as published and keeps dark mode. Compiled for iOS, NativeWind v5's
+     release candidate kept only the light colors, and Uniwind compiled every @kyzarky/ui
+     color to black. So every route copies the 12 color pairs, and the package's
+     components are web-only either way.
+   - Recommendation: plain styles, plus a unit test that fails when the copy and the
+     pinned package disagree. It adds no styling library or build config, and it works on
+     SDK 58 today. NativeWind v5 is a pre-release tested on SDK 57, and it needs
+     lightningcss pinned to an older version.
+   - Revisit when NativeWind v5 is stable on the SDK in use, or when a second native app
+     needs the colors. Then the tokens could move to their own package, which @kyzarky/ui's
+     ADR 0001 already allows for.
+
 ## Ky's question bank (later rounds)
 
 Reorder as answers come in.
 
 1. **Dev phone:** should Ky's Android be the everyday dev phone (free builds, the Kotlin half
    early), with her iPhone getting milestone builds?
-2. **Styling:** NativeWind (Tailwind 4) to reuse @kyzarky/ui's tokens, or plain React Native
-   styles with the tokens ported? Research first.
+2. **Styling:** researched and moved to round 7 (2026-10-30).
 3. **v1 done:** proposal: Mom watermarks a real 50-photo batch on her own, and the copies
    sort beside the originals.
 4. **Feedback:** how will Mom say what to change, and how fast should fixes reach her? EAS
@@ -214,3 +233,19 @@ on Ky's machine).
   ($3.99), and LocalStamp ($0.99 after a trial, Chinese-only). iWatermark+ Lite's text
   marks are free, but whether it batches is unverified. Details are in
   `research/market-watermark-apps.md`.
+
+Checked 2026-10-30, for round 7. Details are in `research/styling-nativewind-vs-plain.md`.
+
+- **NativeWind v5:** its docs say "This is a pre-release version of Nativewind. It is not
+  intended for production use." The release candidate's tested target is "Expo 57.0.22
+  with React Native 0.86.3"
+  ([NativeWind](https://www.nativewind.dev/v5/guides/migrate-from-preview)). The upgrade
+  guide says to "pin lightningcss 1.30.1", and that v4, the stable release, "uses Tailwind
+  CSS 3" ([NativeWind](https://www.nativewind.dev/v5/guides/migrate-from-v4)).
+- **Uniwind:** version 1.13.1, MIT ([npm](https://www.npmjs.com/package/uniwind)). Expo's
+  Tailwind guide names it and NativeWind for iOS and Android
+  ([Expo](https://docs.expo.dev/guides/tailwind/)).
+- **The compile results** come from running each library's compiler on @kyzarky/ui's
+  `theme.css` 0.5.2. The research file has the steps.
+- **Dark mode in Expo** needs `"userInterfaceStyle": "automatic"`. Without it, the app
+  stays light ([Expo](https://docs.expo.dev/develop/user-interface/color-themes/)).
