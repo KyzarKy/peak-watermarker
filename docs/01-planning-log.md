@@ -8,8 +8,8 @@ built until Ky signs off on it.
 
 ## Status
 
-Rounds 1 to 4 answered. Rounds 5 and 6 are for Mom; Ky asks her. Asked 2026-10-30, waiting
-on her answers. Round 7, on styling, is for Ky (asked 2026-10-30).
+Rounds 1 to 4 and round 7 (styling) are answered. Rounds 5 and 6 are for Mom; Ky asks her.
+Asked 2026-10-30, waiting on her answers.
 
 ## Decided
 
@@ -64,12 +64,19 @@ Decided in the dialogue:
 12. **Public GitHub repo from the first commit** (2026-10-29), with Fluent Prior's "public to
     read" license (2026-10-30). Everything is visible, so Mom's details, her mark's text,
     and secrets stay out.
+13. **Plain React Native styles for v1** (2026-10-31, round 7). @kyzarky/ui's 12 light and
+    dark color pairs are copied into `src/theme.ts`, and `useColorScheme()` picks light or
+    dark. A unit test parses `theme.css` from the package, pinned to an exact version as a
+    dev dependency, and fails when the copy and the package disagree. Why: neither
+    NativeWind v5 nor Uniwind kept dark mode when compiling the published `theme.css`, so
+    every route needed a copy, and plain styles add no styling library or build config
+    (`research/styling-nativewind-vs-plain.md`). Revisit when NativeWind v5 is stable on the
+    SDK in use, or when a second native app needs the colors.
 
 ## Still open
 
 - Mom's phone settings (round 5).
 - How Mom wants it to work (round 6).
-- Styling (round 7).
 - Ky's question bank (below).
 - Later features: logo or signature, copyright in metadata, keeping HDR, an album, a
   web-size export, more saved styles, Android.
@@ -150,12 +157,13 @@ Record the shape of her answers only, never her name or the mark's text (AGENTS.
    website or print lab takes it?
 5. **Today:** what does she use now, if anything, and what bugs her about it?
 
-## Round 7: styling (Ky, asked 2026-10-30)
+## Round 7: styling (Ky, asked 2026-10-30, answered 2026-10-31)
 
 From `research/styling-nativewind-vs-plain.md`.
 
 1. **Styling for v1:** plain React Native styles with @kyzarky/ui's colors copied into
-   `src/theme.ts`, or NativeWind v5 with a native copy of its theme?
+   `src/theme.ts`, or NativeWind v5 with a native copy of its theme? Answer: plain styles
+   (decision 13).
    - Neither Tailwind library that Expo's guide names, NativeWind or Uniwind, reads
      `theme.css` 0.5.2 as published and keeps dark mode. Compiled for iOS, NativeWind v5's
      release candidate kept only the light colors, and Uniwind compiled every @kyzarky/ui
@@ -175,7 +183,7 @@ Reorder as answers come in.
 
 1. **Dev phone:** should Ky's Android be the everyday dev phone (free builds, the Kotlin half
    early), with her iPhone getting milestone builds?
-2. **Styling:** researched and moved to round 7 (2026-10-30).
+2. **Styling:** decided in round 7 (decision 13).
 3. **v1 done:** proposal: Mom watermarks a real 50-photo batch on her own, and the copies
    sort beside the originals.
 4. **Feedback:** how will Mom say what to change, and how fast should fixes reach her? EAS
