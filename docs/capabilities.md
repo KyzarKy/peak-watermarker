@@ -82,7 +82,8 @@ behind the key facts are linked inline.
     map) or a face box.
   - The lowest score wins.
 - WCAG contrast picks a white or black mark, plus a soft shadow.
-- **Review grid:** she sees every photo with its spot and taps any one to nudge it.
+- **Review grid:** she sees every photo with its spot and taps any one to nudge it, or to
+  change that photo's mark color and opacity (decision 16).
 - No model downloads. Foundation Models was ruled out: its iOS 27 image input returns text,
   not coordinates, at seconds per photo.
 - **Android (later):** the same scorer. Add bundled face detection only if faces turn out to
@@ -98,7 +99,7 @@ behind the key facts are linked inline.
 ### C9. Encode with the metadata kept
 - **Owner:** the module.
 - Write the same container as the input: HEIC stays HEIC, JPEG stays JPEG, PNG stays PNG,
-  and DNG becomes HEIC. Round 6 asks whether she'd rather always get JPEG.
+  and DNG becomes HEIC. She keeps each format rather than always getting JPEG (decision 17).
 - **iOS:** `CGImageDestinationAddImage` with the source's properties
   ([Apple](https://developer.apple.com/documentation/imageio/cgimagedestination)). Set
   `Orientation = 1`, because the pixels are already rotated. Set a compression quality, and
@@ -107,7 +108,8 @@ behind the key facts are linked inline.
 ### C10. Remove-location toggle
 - **Owner:** the module and the UI.
 - **iOS:** delete the `{GPS}` dictionary (or use `kCGImageMetadataShouldExcludeGPS`), and
-  don't set the saved asset's location. Round 6 picks the default.
+  don't set the saved asset's location. The toggle starts off, so copies keep their location
+  unless she turns it on (decision 17).
 - **Android (later):** the picker already strips GPS.
 
 ### C11. Save copies to Photos

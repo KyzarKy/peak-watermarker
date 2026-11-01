@@ -8,8 +8,8 @@ built until Ky signs off on it.
 
 ## Status
 
-Rounds 1 to 4 and round 7 (styling) are answered. Rounds 5 and 6 are for Mom; Ky asks her.
-Asked 2026-10-30, waiting on her answers.
+Rounds 1 to 7 and the question bank are answered. Ky answered rounds 5 and 6 for Mom on
+2026-10-31. One fact is still open: her iOS version. Next is `02-plan.md`.
 
 ## Decided
 
@@ -37,10 +37,10 @@ Decided in the dialogue:
 3. **Portfolio piece** (2026-10-29), under the working agreement in AGENTS.md.
 4. **iPhone first, Android later** (2026-10-29). The code stays portable, so Android is a
    later milestone, not a rewrite.
-5. **Mom's iPhone is a 15 or newer** (2026-10-29, Ky's estimate; round 5 confirms). Its
-   default photo is then most likely a 24MP HEIC with an HDR gain map, and 48MP is possible.
-   The iPhone 15 Pro made 24MP the default, and the 15 and later capture Adaptive HDR from
-   iOS 18 on.
+5. **Mom's iPhone is a 16 Pro Max** (2026-10-31, round 5; Ky's first estimate was "a 15 or
+   newer"). Its default photo is a 24MP HEIC with an HDR gain map, and 48MP and ProRAW are
+   options. The iPhone 15 Pro made 24MP the default, and the 15 and later capture Adaptive
+   HDR from iOS 18 on.
 6. **Full resolution is required** (2026-10-29). She uses the copies for social media, her
    website, and prints or clients. A web-size export is a later convenience.
 7. **Batches of 50 or more** (2026-10-29). Batch speed, memory use, and a review grid
@@ -72,12 +72,34 @@ Decided in the dialogue:
     every route needed a copy, and plain styles add no styling library or build config
     (`research/styling-nativewind-vs-plain.md`). Revisit when NativeWind v5 is stable on the
     SDK in use, or when a second native app needs the colors.
+14. **Every capture setting is supported** (2026-10-31, round 5). She may switch between High
+    Efficiency, Most Compatible, 48MP, and ProRAW at any time, so the app handles each photo
+    by its actual format. Her current setting only decides what gets tested first.
+15. **Her originals are on the phone** (2026-10-31, round 5). She uses "Download and Keep
+    Originals" and has over 50GB free, so batches work offline and space isn't tight. A
+    setting for iCloud-only originals may come later. Whether v1 still handles iCloud
+    downloads (capabilities C2) is for `02-plan.md`.
+16. **A clean sans-serif mark, adjustable per photo** (2026-10-31, round 6). Auto-placement
+    picks a readable default, and in the review grid she can nudge any photo's mark or change
+    its color and opacity. A good spot is off faces and the subject, easy to read, and in the
+    same corner across the batch when possible.
+17. **Copies keep each photo's format and location by default** (2026-10-31, round 6). HEIC
+    stays HEIC. The remove-location toggle starts off.
+18. **Android is the everyday dev phone** (2026-10-31, question bank). Builds run free from
+    Ky's PC, and the Kotlin half of the module is written alongside the Swift half. Her
+    iPhone gets milestone builds through AltStore. Android Studio, a JDK, and adb need
+    installing first.
+19. **v1 is done when Ky runs a 50-photo batch on her phone** (2026-10-31, question bank),
+    with photos he took. Her first real use feeds milestone 3.
+20. **Feedback comes in person** (2026-10-31, question bank). Mom shows Ky what to change,
+    and fixes ship in batches. The app has no feedback feature.
+21. **Native output is checked in CI** (2026-10-31, question bank). The macOS runner
+    watermarks sample photos Ky took (HEIC, ProRAW, a panorama), checks size, metadata, and
+    orientation, and saves the results to look at.
 
 ## Still open
 
-- Mom's phone settings (round 5).
-- How Mom wants it to work (round 6).
-- Ky's question bank (below).
+- Mom's iOS version (Settings > General > About). It decides whether AltStore works.
 - Later features: logo or signature, copyright in metadata, keeping HDR, an album, a
   web-size export, more saved styles, Android.
 
@@ -95,7 +117,8 @@ Decided in the dialogue:
    Actions plus AltStore, August 2025). Whether EAS's `withoutCredentials` option can do it
    is unverified. Milestone 0 tests this too.
 4. **"Optimal" is Mom's call.** The scorer picks calm, readable spots, but calm areas are
-   also the easiest to crop out or paint over. Round 6 asks what she means by a good spot.
+   also the easiest to crop out or paint over. Round 6's answer (decision 16) didn't ask for
+   hard-to-crop spots, so calm corners are fine for now.
 
 ## Round 1 (asked and answered 2026-10-29)
 
@@ -130,32 +153,39 @@ Ky's best guesses, to confirm with Mom.
 1. **Is "Peak" part of Mom's name, business, or brand?** Answer: no (decision 8).
 2. **License?** Answer: public to read, like Fluent Prior (decision 12).
 
-## Round 5: Mom's phone settings (Mom, asked 2026-10-30)
+## Round 5: Mom's phone settings (Mom, asked 2026-10-30, Ky answered 2026-10-31)
 
 Ky can check these on her phone in about two minutes.
 
 1. **Settings > General > About:** which iPhone, and which iOS version? This decides whether
-   AltStore works and which APIs exist.
+   AltStore works and which APIs exist. Answer: an iPhone 16 Pro Max (decision 5). The iOS
+   version is still open.
 2. **Settings > Camera > Formats:** "High Efficiency" or "Most Compatible"? Is ProRAW on? Is
-   the photo resolution 24MP or 48MP?
+   the photo resolution 24MP or 48MP? Answer: she may change it, so support every setting
+   (decision 14).
 3. **Photos and iCloud** (Settings > Apps > Photos, or her name > iCloud > Photos):
-   "Optimize iPhone Storage" or "Download and Keep Originals"? With Optimize, the full-size original has to download before the app
-   can use it, and that needs internet.
+   "Optimize iPhone Storage" or "Download and Keep Originals"? With Optimize, the full-size
+   original has to download before the app can use it, and that needs internet. Answer:
+   Keep Originals, for now (decision 15).
 4. **Free storage:** how much is left? Each copy takes about as much space as its original.
+   Answer: over 50GB (decision 15).
 
-## Round 6: how Mom wants it to work (Mom, asked 2026-10-30)
+## Round 6: how Mom wants it to work (Mom, asked 2026-10-30, Ky answered 2026-10-31)
 
 Record the shape of her answers only, never her name or the mark's text (AGENTS.md rule 4).
 
 1. **The mark:** what should it say, and how should it look: classic, clean, or
-   handwritten?
+   handwritten? Answer: clean (decision 16).
 2. **Automatic spots:** when the app picks a spot by itself, what makes a spot good or bad?
-   Would she nudge a few in a review grid before saving?
+   Would she nudge a few in a review grid before saving? Answer: off faces and the subject,
+   easy to read, and the same corner when possible. Yes to the review grid, and she also
+   wants to change the mark's color and opacity per photo (decision 16).
 3. **Location:** remove it from every copy by default, or leave it on and turn it off when
-   she wants?
+   she wants? Answer: leave it on (decision 17).
 4. **Format:** keep each photo's format (HEIC stays HEIC), or always save JPEG so any
-   website or print lab takes it?
-5. **Today:** what does she use now, if anything, and what bugs her about it?
+   website or print lab takes it? Answer: keep each format (decision 17).
+5. **Today:** what does she use now, if anything, and what bugs her about it? Answer:
+   nothing yet.
 
 ## Round 7: styling (Ky, asked 2026-10-30, answered 2026-10-31)
 
@@ -177,20 +207,22 @@ From `research/styling-nativewind-vs-plain.md`.
      needs the colors. Then the tokens could move to their own package, which @kyzarky/ui's
      ADR 0001 already allows for.
 
-## Ky's question bank (later rounds)
-
-Reorder as answers come in.
+## Ky's question bank (answered 2026-10-31)
 
 1. **Dev phone:** should Ky's Android be the everyday dev phone (free builds, the Kotlin half
-   early), with her iPhone getting milestone builds?
+   early), with her iPhone getting milestone builds? Answer: yes (decision 18).
 2. **Styling:** decided in round 7 (decision 13).
 3. **v1 done:** proposal: Mom watermarks a real 50-photo batch on her own, and the copies
-   sort beside the originals.
+   sort beside the originals. Answer: Ky's own 50-photo batch on her phone instead
+   (decision 19).
 4. **Feedback:** how will Mom say what to change, and how fast should fixes reach her? EAS
-   Update can ship a JS change the same day.
-5. **Testing without a Mac:** check rendered sample photos (ones Ky took) in CI?
+   Update can ship a JS change the same day. Answer: in person, in batches (decision 20).
+5. **Testing without a Mac:** check rendered sample photos (ones Ky took) in CI? Answer:
+   yes (decision 21).
 6. **Patent:** Shutterstock's US10475145B1 describes saliency-based watermark placement.
-   Read it before demoing the auto mode publicly? Not legal advice.
+   Read it before demoing the auto mode publicly? Not legal advice. Answer: not for now.
+   Ky's view is that saliency maps are long-established, open computer vision (Itti, Koch,
+   and Niebur, 1998).
 
 ## Draft milestones (for 02-plan.md, not signed off)
 
@@ -202,10 +234,12 @@ Reorder as answers come in.
 - **M1, the core loop.** Pick many photos in order, style a text mark, place it once
   (9-point grid, drag, size relative to each photo), render full resolution one photo at a
   time, save copies with their metadata and original capture date, and toggle location off.
-  Done when Mom watermarks a real 50-photo batch.
+  Done when Ky runs a 50-photo batch of his own photos on her phone (decision 19).
 - **M2, auto-placement.** A native thumbnail plus Vision saliency and face boxes feed the
-  TypeScript scorer. A review grid lets her nudge any photo before saving.
-- **M3, her feedback.** The first round of Mom's changes, shipped over the air.
+  TypeScript scorer. A review grid lets her nudge any photo, or change its mark's color and
+  opacity, before saving.
+- **M3, her feedback.** The first round of Mom's changes, collected in person and shipped
+  over the air.
 - **Later:** the "later" list in [capabilities.md](capabilities.md).
 
 ## Facts the decisions rest on
