@@ -1,17 +1,16 @@
 # Plan
 
-**Status: waiting on Ky's sign-off (written 2026-11-02).** No application code until then.
-Once it's signed off, a change to anything documented here needs an ADR in `docs/decisions/`
-first.
+**Status: signed off by Ky on 2026-11-03.** M0 is next. A change to anything documented here
+needs an ADR in `docs/decisions/` first.
 
 The reasons behind each choice are in the [planning log](01-planning-log.md), and the API
 details are in [capabilities.md](capabilities.md). "D13" means decision 13 in the log, and
 "C7" means capability 7.
 
-## Calls for Ky at sign-off
+## Calls Ky made at sign-off
 
-The dialogue didn't settle these. Each has a recommendation, and the rest of this plan
-assumes it.
+The dialogue didn't settle these. Ky accepted each recommendation on 2026-11-03, and the rest
+of this plan assumes them.
 
 1. **Which Apple ID signs the app?** Recommendation: a new free Apple ID used only for this,
    which Ky creates. A user report says a fresh ID worked on iOS 27.2 where an existing one
@@ -77,9 +76,9 @@ AGENTS.md.
 This comes first because the route is the biggest risk. See uncertainty 1 in the log: no
 report shows AltStore with Windows AltServer working on iOS 27.2.
 
-1. **Smoke test, with no project code.** Ky turns on Developer Mode on her phone, installs
-   iTunes and iCloud from Apple's site and the current AltServer, and installs AltStore with
-   the new Apple ID. Then he sideloads any small app. If that fails, he repeats it with
+1. **Smoke test, with no project code.** Ky installs iTunes and iCloud from Apple's site and
+   the current AltServer, installs AltStore on her phone with the new Apple ID, and turns on
+   Developer Mode. Then he sideloads any small app. If that fails, he repeats it with
    Sideloadly.
 2. **A blank Expo app with a one-function local module.** GitHub Actions builds it unsigned.
 3. **Install it on her phone.** It opens and calls the Swift function.

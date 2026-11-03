@@ -3,13 +3,13 @@
 The running record of the planning dialogue. The request and its constraints are in
 [00-kickoff-brief.md](00-kickoff-brief.md), and what the app has to do is in
 [capabilities.md](capabilities.md). Decisions are added here as Ky makes them, with the
-date. When the questions converge, the written plan goes in `02-plan.md`. Nothing gets
-built until Ky signs off on it.
+date. The written plan is in `02-plan.md`, which Ky signed off on 2026-11-03.
 
 ## Status
 
 Rounds 1 to 7 and the question bank are answered. Ky answered rounds 5 and 6 for Mom on
-2026-10-31. [02-plan.md](02-plan.md) is written and waiting on Ky's sign-off.
+2026-10-31. Ky signed off on [02-plan.md](02-plan.md) on 2026-11-03,
+with its four recommendations. M0's smoke test is next.
 
 ## Decided
 
@@ -99,7 +99,6 @@ Decided in the dialogue:
 
 ## Still open
 
-- The calls `02-plan.md` lists for Ky's sign-off.
 - Later features: logo or signature, copyright in metadata, keeping HDR, an album, a
   web-size export, more saved styles, Android.
 
@@ -293,3 +292,8 @@ found. Details are in `research/frameworks-and-distribution.md`.
   ([#1840](https://github.com/altstoreio/AltStore/issues/1840)). Others report a signing
   error, including on iOS 27.2, where Sideloadly v0.72 then worked with a new free Apple ID
   ([#1856](https://github.com/altstoreio/AltStore/issues/1856)).
+- **Text-message codes, checked 2026-11-03:** on macOS, AltServer 1.8.2 and 1.8.3 fail with
+  HTTP 415 when they request a code by text message, and a proposed fix isn't validated
+  ([#1844](https://github.com/altstoreio/AltStore/issues/1844)). Windows isn't reported. A new
+  Apple ID with no Apple device of its own may land on this path, and M0 will show whether it
+  does.

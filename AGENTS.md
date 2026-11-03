@@ -12,22 +12,23 @@ and saves watermarked copies of all of them. Or she lets the app pick a spot for
 on the phone itself. Originals are never touched, and nothing leaves the phone. It's also one
 of Ky Merritt's portfolio projects: a React Native app with a small native module.
 
-## Status: planning
+## Status: M0
 
-No application code until Ky signs off on the written plan
-([docs/02-plan.md](docs/02-plan.md), waiting on his sign-off). Read these first, in order:
+Ky signed off on the plan ([docs/02-plan.md](docs/02-plan.md)) on 2026-11-03. M0 opens with a
+smoke test that uses no project code, and no application code starts until it passes. Read
+these first, in order:
 
 1. [docs/00-kickoff-brief.md](docs/00-kickoff-brief.md): the request and its constraints.
 2. [docs/01-planning-log.md](docs/01-planning-log.md): decisions so far, with dates, and the
    open questions.
 3. [docs/capabilities.md](docs/capabilities.md): what the app has to do, mapped to iOS and
    Android APIs.
-4. `research/README.md`: the index of cited research (local only, see rule 6).
+4. [docs/02-plan.md](docs/02-plan.md): the signed-off plan and milestones.
+5. `research/README.md`: the index of cited research (local only, see rule 6).
 
-Planning is a dialogue. Ask three to five questions at a time, short enough to answer on a
-phone. Challenge assumptions, research when it sharpens a decision, and record each decision
-in the planning log with its date. Questions only Mom can answer are marked (Mom), and Ky
-asks her.
+When a decision needs Ky, ask three to five questions at a time, short enough to answer on a
+phone. Challenge assumptions, and research when it sharpens a decision. Questions only Mom
+can answer are marked (Mom), and Ky asks her.
 
 ## How we work
 
@@ -73,11 +74,11 @@ Now:
 AGENTS.md    these instructions (CLAUDE.md imports this file)
 README.md    what the project is, for people landing on the repo
 LICENSE      public to read; all rights reserved
-docs/        brief, planning log, capabilities
+docs/        brief, planning log, capabilities, plan
 research/    cited research, gitignored, local only
 ```
 
-Planned once code starts (final in `02-plan.md`):
+Planned once code starts (`02-plan.md` has the full layout):
 
 ```
 app/                        screens (Expo Router)
