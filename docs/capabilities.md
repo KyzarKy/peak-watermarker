@@ -80,7 +80,8 @@ behind the key facts are linked inline.
   - Each candidate scores by edge density plus luminance variance.
   - A penalty applies for overlapping Vision's attention saliency (a 64x64 or 68x68 heat
     map) or a face box.
-  - The lowest score wins.
+  - The lowest score wins, with a preference for the corner most of the batch uses (decision
+    16).
 - WCAG contrast picks a white or black mark, plus a soft shadow.
 - **Review grid:** she sees every photo with its spot and taps any one to nudge it, or to
   change that photo's mark color and opacity (decision 16).
@@ -197,7 +198,7 @@ the apps surveyed.
 | Shadow or outline | Common | v1 (C4) |
 | Tiled pattern | Common | Later (L2) |
 | Signature capture | Common | Later (L1) |
-| Resize or change format on export | Common | Later (L6); format question in round 6 |
+| Resize or change format on export | Common | Later (L6); v1 keeps each format (decision 17) |
 | QR codes, date or EXIF stamps | Common | Not planned |
 | Keeps EXIF, including capture date | Differentiator | v1 (C9, C11) |
 | Automatic color for contrast | Differentiator | v1 (C7) |

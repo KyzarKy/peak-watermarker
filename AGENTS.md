@@ -14,8 +14,8 @@ of Ky Merritt's portfolio projects: a React Native app with a small native modul
 
 ## Status: planning
 
-No application code until Ky signs off on a written plan (`docs/02-plan.md`, not written
-yet). Read these first, in order:
+No application code until Ky signs off on the written plan
+([docs/02-plan.md](docs/02-plan.md), waiting on his sign-off). Read these first, in order:
 
 1. [docs/00-kickoff-brief.md](docs/00-kickoff-brief.md): the request and its constraints.
 2. [docs/01-planning-log.md](docs/01-planning-log.md): decisions so far, with dates, and the

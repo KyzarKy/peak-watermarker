@@ -9,7 +9,7 @@ built until Ky signs off on it.
 ## Status
 
 Rounds 1 to 7 and the question bank are answered. Ky answered rounds 5 and 6 for Mom on
-2026-10-31. One fact is still open: her iOS version. Next is `02-plan.md`.
+2026-10-31. [02-plan.md](02-plan.md) is written and waiting on Ky's sign-off.
 
 ## Decided
 
@@ -37,8 +37,8 @@ Decided in the dialogue:
 3. **Portfolio piece** (2026-10-29), under the working agreement in AGENTS.md.
 4. **iPhone first, Android later** (2026-10-29). The code stays portable, so Android is a
    later milestone, not a rewrite.
-5. **Mom's iPhone is a 16 Pro Max** (2026-10-31, round 5; Ky's first estimate was "a 15 or
-   newer"). Its default photo is a 24MP HEIC with an HDR gain map, and 48MP and ProRAW are
+5. **Mom's iPhone is a 16 Pro Max on iOS 27.2** (2026-10-31 and 2026-11-02, round 5; Ky's
+   first estimate was "a 15 or newer"). Its default photo is a 24MP HEIC with an HDR gain map, and 48MP and ProRAW are
    options. The iPhone 15 Pro made 24MP the default, and the 15 and later capture Adaptive
    HDR from iOS 18 on.
 6. **Full resolution is required** (2026-10-29). She uses the copies for social media, her
@@ -99,17 +99,21 @@ Decided in the dialogue:
 
 ## Still open
 
-- Mom's iOS version (Settings > General > About). It decides whether AltStore works.
+- The calls `02-plan.md` lists for Ky's sign-off.
 - Later features: logo or signature, copyright in metadata, keeping HDR, an album, a
   web-size export, more saved styles, Android.
 
 ## Biggest uncertainties
 
-1. **Sideloading has to hold up in daily life.** AltStore's support for iOS 27 is
-   unverified; Windows AltServer 1.7.4 fixed an iOS 26.4 crash in March 2026. If her phone
-   is away from home Wi-Fi, or Ky's PC is off, for more than 7 days, the app won't open
-   until it's renewed. Whether her saved style survives that is unverified. Milestone 0
-   tests the route, and the fallback is $99 once.
+1. **Sideloading has to hold up in daily life.** This is the biggest risk, and the check on
+   2026-11-02 made it larger. Users report that Apple's sign-in rejected AltStore, Sideloadly,
+   and SideStore several times in September and October 2026. Fixes shipped in late October,
+   but reports on Windows are still mixed, and no report shows AltStore with Windows
+   AltServer working on iOS 27.2. Each renewal needs that sign-in, so a future break could
+   stop the app opening until a tool is patched. If her phone is away from home Wi-Fi, or
+   Ky's PC is off, for more than 7 days, the app also won't open until it's renewed. Whether
+   her saved style survives that is unverified. Milestone 0 tests the route, and the fallback
+   is $99 once.
 2. **Native code without a Mac.** Swift compiles only in CI, with no debugger, and every
    native change costs a CI build. So the module stays small with a narrow, typed API, and
    the decisions (layout, scoring) live in TypeScript with unit tests.
@@ -158,8 +162,8 @@ Ky's best guesses, to confirm with Mom.
 Ky can check these on her phone in about two minutes.
 
 1. **Settings > General > About:** which iPhone, and which iOS version? This decides whether
-   AltStore works and which APIs exist. Answer: an iPhone 16 Pro Max (decision 5). The iOS
-   version is still open.
+   AltStore works and which APIs exist. Answer: an iPhone 16 Pro Max on iOS 27.2 (decision
+   5).
 2. **Settings > Camera > Formats:** "High Efficiency" or "Most Compatible"? Is ProRAW on? Is
    the photo resolution 24MP or 48MP? Answer: she may change it, so support every setting
    (decision 14).
@@ -224,23 +228,9 @@ From `research/styling-nativewind-vs-plain.md`.
    Ky's view is that saliency maps are long-established, open computer vision (Itti, Koch,
    and Niebur, 1998).
 
-## Draft milestones (for 02-plan.md, not signed off)
+## Milestones
 
-- **M0, prove the install route.** A blank Expo app with a one-function local module.
-  GitHub Actions builds it unsigned, and AltStore installs it on her phone with Developer
-  Mode on. Metro connects over home Wi-Fi, EAS Update delivers a JS change, and the app
-  opens after one 7-day renewal with its data intact. If any step fails, this log takes up
-  $99 once versus a web app.
-- **M1, the core loop.** Pick many photos in order, style a text mark, place it once
-  (9-point grid, drag, size relative to each photo), render full resolution one photo at a
-  time, save copies with their metadata and original capture date, and toggle location off.
-  Done when Ky runs a 50-photo batch of his own photos on her phone (decision 19).
-- **M2, auto-placement.** A native thumbnail plus Vision saliency and face boxes feed the
-  TypeScript scorer. A review grid lets her nudge any photo, or change its mark's color and
-  opacity, before saving.
-- **M3, her feedback.** The first round of Mom's changes, collected in person and shipped
-  over the air.
-- **Later:** the "later" list in [capabilities.md](capabilities.md).
+These moved to [02-plan.md](02-plan.md).
 
 ## Facts the decisions rest on
 
@@ -291,3 +281,15 @@ Checked 2026-10-30, for round 7. Details are in `research/styling-nativewind-vs-
   `theme.css` 0.5.2. The research file has the steps.
 - **Dark mode in Expo** needs `"userInterfaceStyle": "automatic"`. Without it, the app
   stays light ([Expo](https://docs.expo.dev/develop/user-interface/color-themes/)).
+
+Checked 2026-11-02, for her iOS version. These are user reports, with no official statement
+found. Details are in `research/frameworks-and-distribution.md`.
+
+- **Sign-in failures:** -80045 from Oct 12, then -80046, across AltStore and other tools
+  ([#1828](https://github.com/altstoreio/AltStore/issues/1828),
+  [#1840](https://github.com/altstoreio/AltStore/issues/1840)).
+- **After the fixes, on Windows:** one user reports AltServer 1.8.1.0 with AltStore 2.3.2
+  working, without giving an iOS version
+  ([#1840](https://github.com/altstoreio/AltStore/issues/1840)). Others report a signing
+  error, including on iOS 27.2, where Sideloadly v0.72 then worked with a new free Apple ID
+  ([#1856](https://github.com/altstoreio/AltStore/issues/1856)).
